@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Subjects{% endblock %}
+{% block content %}
+  <h2>Add New Subject</h2>
+  <form method="post" action="{{ url_for('subjects') }}" class="mb-4 p-3 bg-light border rounded">
+    <div class="row g-3">
+      <div class="col-md">
+        <input type="text" class="form-control" name="name" placeholder="Subject Name" required>
+      </div>
+      <div class="col-md">
+        <input type="number" class="form-control" name="max_marks" value="100" required>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Add Subject</button>
+      </div>
+    </div>
+  </form>
+
+  <h3>Existing Subjects</h3>
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Max Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sub in subjects_list %}
+      <tr>
+        <td>{{ sub['subject_id'] }}</td>
+        <td>{{ sub['name'] }}</td>
+        <td>{{ sub['max_marks'] }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="3" class="text-center">No subjects found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Results for {{ student['name'] }}{% endblock %}
+{% block content %}
+  <h2>Results for {{ student['name'] }}</h2>
+  <h4 class="text-muted">{{ student['roll_no'] }} - {{ student['class'] }}</h4>
+
+  <table class="table table-bordered table-striped mt-4">
+    <thead class="table-light">
+      <tr>
+        <th>Subject</th>
+        <th>Marks Obtained</th>
+        <th>Max Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in rows_list %}
+      <tr>
+        <td>{{ r['subject_name'] }}</td>
+        <td>{{ r['marks'] }}</td>
+        <td>{{ r['max_marks'] }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="3" class="text-center">No results found for this student.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot class="table-group-divider">
+      <tr class="fw-bold">
+        <td>Total</td>
+        <td>{{ total_marks }}</td>
+        <td>{{ total_max }}</td>
+      </tr>
+      <tr class="fw-bold fs-5">
+        <td>Grade</td>
+        <td colspan="2">{{ grade }}</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <a href="{{ url_for('students') }}" class="btn btn-outline-secondary mt-3">&larr; Back to Students List</a>
+{% endblock %}

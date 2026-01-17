@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  <h2>Quick actions</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><a href="{{ url_for('students') }}">List / Add Students</a></li>
+    <li class="list-group-item"><a href="{{ url_for('subjects') }}">List / Add Subjects</a></li>
+    <li class="list-group-item"><a href="{{ url_for('enter_marks') }}">Enter / Edit Marks</a></li>
+  </ul>
+{% endblock %}
